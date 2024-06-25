@@ -12,4 +12,5 @@ The dataset utilizes the preprocessed datasets provided by [EGE-UNet](https://gi
 
 ## Visualization
 
-![Result](./imgs/fig3.png)
+<img src="./imgs/fig3.png" style="width: 60%; height: auto;">
+
