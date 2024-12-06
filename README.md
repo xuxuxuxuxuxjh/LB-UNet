@@ -16,6 +16,9 @@ PyTorch implementation for LB-UNet: A Lightweight Boundary-assisted UNet for Ski
 ## Dataset
 The dataset utilizes the preprocessed datasets provided by [EGE-UNet](https://github.com/JCruan519/EGE-UNet) from [Google Drive](https://drive.google.com/file/d/1J6c2dDqX8qka1q4EtmTBA0w3Kez7-M6T/view?usp=sharing).
 
+The boundary maps that you can generate using ```boundary.py``` or download from Google Drive.
+[ISIC2017](https://drive.google.com/file/d/1NfPPWOWDbOKltjUKvZSFoaxtP5gD0mQu/view?usp=sharing), [ISIC2018](https://drive.google.com/file/d/1YTO1Ge6yQBnDz79L-Qiuqg8w_TW6O9AM/view?usp=sharing).
+
 ## Code
 
 1. Update the input and output paths for ```Boundary.py``` to align with the directory structure of ```dataset.py```.
