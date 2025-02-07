@@ -67,7 +67,7 @@ def Get_edge(img):
     for i in range(row - 1):
         for j in range(col - 1):
             if i - 1 > 0 & i + 1 < row - 1 & j - 1 > 0 & j + 1 < col - 1:
-                if img[i][j - 1] & img[i][j + 1] & img[i - 1][j] & img[i + 1][j]:
+                if img[i][j - 1] and img[i][j + 1] and img[i - 1][j] and img[i + 1][j]:
                     new[i][j] = 0
 
     return new
