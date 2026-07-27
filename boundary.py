@@ -66,7 +66,7 @@ def Get_edge(img):
     row, col = img.shape
     for i in range(row - 1):
         for j in range(col - 1):
-            if i - 1 > 0 & i + 1 < row - 1 & j - 1 > 0 & j + 1 < col - 1:
+            if (i - 1 > 0) and (i + 1 < row - 1) and (j - 1 > 0) and (j + 1 < col - 1):
                 if img[i][j - 1] and img[i][j + 1] and img[i - 1][j] and img[i + 1][j]:
                     new[i][j] = 0
 
@@ -233,7 +233,13 @@ if __name__ == '__main__':
             return np.array(fitness)
 
         def select_animal(animals, fitness):
-            idx = np.random.choice(np.arange(N), size=N, replace=True, p=(fitness / (np.sum(fitness) + 1e-8)))
+            fitness_sum = np.sum(fitness)
+            if not np.isfinite(fitness_sum) or fitness_sum <= 0:
+                probabilities = np.full(len(fitness), 1.0 / len(fitness))
+            else:
+                probabilities = fitness / fitness_sum
+                probabilities = probabilities / np.sum(probabilities)
+            idx = np.random.choice(np.arange(len(animals)), size=len(animals), replace=True, p=probabilities)
             new_animals = []
             for id in idx:
                 new_animals.append(animals[id])
@@ -266,7 +272,7 @@ if __name__ == '__main__':
         def crossover_and_variation(animals, cross_rate, is_randomise=True):
             new_animals = []
             for father in animals:
-                child = father
+                child = list(father)
                 if np.random.rand() < cross_rate:
                     mother = animals[np.random.randint(N)]
                     if is_randomise:
@@ -275,7 +281,7 @@ if __name__ == '__main__':
                         for id in index:
                             child[id[0]] = mother[id[0]]
 
-                variation(child, variation_rate)
+                child = variation(child, variation_rate)
                 new_animals.append(child)
             return new_animals
 
